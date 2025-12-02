@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-900 text-gray-100 font-sans antialiased;
+  }
+  
+  * {
+    @apply scroll-smooth;
+  }
+}
+
+@layer components {
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-navy-800;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-navy-600 rounded-full hover:bg-magenta-500 transition-colors;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-magenta-500 to-magenta-400 bg-clip-text text-transparent;
+  }
+
+  /* Glass effect cards */
+  .glass-card {
+    @apply bg-navy-800/50 backdrop-blur-sm border border-navy-700/50 rounded-xl shadow-xl;
+  }
+
+  /* Glow effect */
+  .glow-magenta {
+    box-shadow: 0 0 20px rgba(255, 27, 141, 0.3);
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-magenta-500 hover:bg-magenta-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-magenta-500/50;
+  }
+
+  .btn-secondary {
+    @apply bg-navy-700 hover:bg-navy-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 border border-navy-600 hover:border-magenta-500/50;
+  }
+
+  /* Copy button animation */
+  @keyframes copied {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .copied {
+    animation: copied 0.3s ease-in-out;
+  }
+}
+
+/* Loading animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
+/* Pulse animation for search */
+@keyframes pulse-border {
+  0%, 100% {
+    border-color: rgba(255, 27, 141, 0.3);
+    box-shadow: 0 0 0 0 rgba(255, 27, 141, 0.4);
+  }
+  50% {
+    border-color: rgba(255, 27, 141, 0.6);
+    box-shadow: 0 0 20px 4px rgba(255, 27, 141, 0.2);
+  }
+}
+
+.searching {
+  animation: pulse-border 2s ease-in-out infinite;
+}

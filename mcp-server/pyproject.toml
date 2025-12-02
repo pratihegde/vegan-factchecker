@@ -1,0 +1,16 @@
+[project]
+name = "vegan-fact-checker-server"
+version = "0.1.0"
+description = "MCP server for vegan fact-checking"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "httpx>=0.25.0",
+    "python-dotenv>=1.0.0",
+    "openai>=1.0.0",
+    "tavily-python>=0.5.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

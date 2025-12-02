@@ -1,0 +1,21 @@
+# MCP Server Core
+mcp>=1.0.0
+
+# HTTP Client for API requests
+httpx>=0.25.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# OpenAI API for AI analysis
+openai>=1.0.0
+
+# Tavily Search API
+tavily-python>=0.5.0
+
+# Data validation
+pydantic>=2.0.0
+
+# FastAPI for REST API (NEW - for frontend integration)
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
