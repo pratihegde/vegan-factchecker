@@ -457,10 +457,16 @@ def format_paper_details(details: Dict) -> str:
 
 **Access:** {details['link']}
 
-{"## Related Papers\n" + chr(10).join([f"- {p['title']}" for p in details.get('related_papers', [])]) if details.get('related_papers') else ""}
+{_format_related_papers(details.get('related_papers', []))}
 """
 
-
+def _format_related_papers(papers):
+    """Helper function to format related papers without f-string backslash."""
+    if not papers:
+        return ""
+    paper_titles = [f"- {p['title']}" for p in papers]
+    return "## Related Papers\n" + "\n".join(paper_titles)
+    
 def format_claim_analysis(analysis: Dict) -> str:
     """Format claim analysis results."""
     return f"""
