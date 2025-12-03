@@ -103,6 +103,129 @@ const generateCounterResponse = (question) => {
   if (!question) return "See the sources above for detailed information.";
   
   const q = question.toLowerCase();
+
+  // Updated generateCounterResponse function with more patterns
+// Insert this into ResultsDisplay.jsx around line 102-175
+
+const generateCounterResponse = (question) => {
+  if (!question) return "See the sources above for detailed information.";
+  
+  const q = question.toLowerCase();
+  
+  // PLANT PAIN RESPONSES - Specific matching
+  if (q.includes('feel pain') || q.includes('really feel') || q.includes('like animals')) {
+    return "Plants lack brains, nervous systems, and pain receptors - all required for feeling pain. They respond to stimuli through automatic chemical processes, not conscious experience.";
+  }
+  
+  if (q.includes('chemical') || q.includes('release') || q.includes('when you cut')) {
+    return "Yes, plants release chemicals when damaged - but that's automatic signaling, not pain. A smoke detector beeps when there's fire, but it's not scared. Chemical responses ≠ consciousness.";
+  }
+  
+  if (q.includes('scream') || q.includes('sound') || q.includes('noise') || q.includes('study')) {
+    return "That was ultrasonic vibrations from air bubbles in damaged stems - like wood creaking. No evidence of consciousness, distress, or suffering. Plants lack the neurological hardware for that.";
+  }
+  
+  if (q.includes('respond') || q.includes('react') || q.includes('just reacting') || q.includes("aren't just")) {
+    return "Response doesn't equal pain. Your thermostat responds to temperature changes - it doesn't feel hot or cold. Plants lack the brain structures necessary for conscious experience.";
+  }
+  
+  if (q.includes('survival') && q.includes('mechanism')) {
+    return "Survival mechanisms are automatic processes, not evidence of consciousness. Single-celled bacteria have survival mechanisms too - they're not sentient. Pain requires a nervous system and brain.";
+  }
+  
+  if (q.includes('communication') || q.includes('signal') || q.includes('talk')) {
+    return "Plants use chemical signals, but that's not communication like animals. It's automatic chemistry with no consciousness required - like how your liver responds to toxins automatically.";
+  }
+  
+  // PROTEIN RESPONSES
+  if (q.includes('protein')) {
+    if (q.includes('incomplete') || q.includes('complete')) {
+      return "Plant proteins become complete when combined throughout the day. The Academy of Nutrition and Dietetics confirms plant-based diets meet all protein needs. Beans + rice, hummus + pita - all complete protein.";
+    }
+    if (q.includes('enough') || q.includes('adequate')) {
+      return "Yes! The Academy of Nutrition and Dietetics (100,000+ professionals) confirms plant-based diets provide adequate protein for all life stages. Billions of healthy vegans prove it works.";
+    }
+    return "Plant proteins combined throughout the day provide all essential amino acids. Major health organizations confirm plant-based diets are nutritionally adequate.";
+  }
+  
+  // B12 RESPONSES
+  if (q.includes('b12') || q.includes('b-12')) {
+    return "B12 comes from bacteria, not animals. Factory-farmed animals get B12 supplements in their feed - vegans just skip the middleman. It's the same bacteria-produced B12.";
+  }
+  
+  // OMEGA-3 RESPONSES  
+  if (q.includes('omega') || q.includes('dha') || q.includes('epa')) {
+    return "ALA from flax, chia, and walnuts converts to DHA/EPA. Or take algae oil for direct DHA/EPA - that's where fish get their omega-3s anyway!";
+  }
+  
+  // IRON RESPONSES
+  if (q.includes('iron')) {
+    return "Plant foods are high in iron (lentils, spinach, fortified cereals). Pair with vitamin C for 3-4x better absorption. Many omnivores are iron-deficient too.";
+  }
+  
+  // CALCIUM RESPONSES
+  if (q.includes('calcium')) {
+    return "Calcium is abundant in fortified plant milk, tofu, leafy greens, and tahini. Countries with highest dairy consumption have highest osteoporosis rates!";
+  }
+  
+  // SOY RESPONSES
+  if (q.includes('soy')) {
+    if (q.includes('land') || q.includes('deforestation') || q.includes('rainforest') || q.includes('amazon')) {
+      return "77% of soy goes to livestock feed, not human consumption. Growing soy for tofu uses 15x less land than raising cattle. Beef is the #1 driver of Amazon deforestation, not soy for vegans.";
+    }
+    if (q.includes('estrogen') || q.includes('hormone')) {
+      return "Soy contains phytoestrogens (plant compounds), not human estrogen. Studies show soy is safe and may reduce cancer risk. Dairy has actual mammalian estrogen though.";
+    }
+  }
+  
+  // PRIVILEGE/ACCESSIBILITY RESPONSES
+  if (q.includes('privilege') || q.includes('accessible') || q.includes('afford') || q.includes('poor') || q.includes('expensive')) {
+    return "Beans, rice, lentils, and oats are the cheapest foods in every country. Meat is expensive and heavily subsidized. Veganism is practiced worldwide across all economic levels - India has 500M vegetarians.";
+  }
+  
+  // AVOCADO/CARBON FOOTPRINT RESPONSES
+  if (q.includes('avocado') || q.includes('almond') || (q.includes('carbon') && (q.includes('footprint') || q.includes('emission')))) {
+    return "Even avocados/almonds have 10-50x lower carbon and water footprint than beef or lamb. You can be vegan eating only local beans and vegetables - exotic foods are optional.";
+  }
+  
+  // QUINOA/IMPORTS RESPONSES
+  if (q.includes('quinoa') || q.includes('import') || q.includes('ship') || q.includes('transport') || q.includes('food miles')) {
+    return "Local beans work great! Plus, animal agriculture imports billions of tons of soy feed from South America. Transport is only 6% of food emissions - what you eat matters way more than where it's from.";
+  }
+  
+  // INDIGENOUS/CULTURE RESPONSES
+  if (q.includes('indigenous') || q.includes('culture') || q.includes('tradition') || q.includes('ancestors')) {
+    return "Many cultures have plant-based traditions (Indian, Ethiopian, Mediterranean). Veganism respects indigenous food sovereignty while reducing harm. Factory farming destroys indigenous lands.";
+  }
+  
+  // WATER USAGE
+  if (q.includes('water') && (q.includes('almond') || q.includes('agriculture') || q.includes('crop'))) {
+    return "Almonds use 371L water per 100g protein. Beef uses 15,415L. Even the thirstiest plant foods use far less water than animal products. A burger needs 2,400L of water!";
+  }
+  
+  // JOBS/FARMERS
+  if (q.includes('farmer') || q.includes('job') || q.includes('employment') || q.includes('economy')) {
+    return "Farmers can transition to growing plants for humans instead of animal feed. This creates more jobs - plant farming is more labor-intensive than factory farming. Many farm transition programs exist.";
+  }
+  
+  // HEALTH/NUTRITION GENERAL
+  if (q.includes('healthy') || q.includes('nutrition') || q.includes('deficiency')) {
+    return "The Academy of Nutrition and Dietetics, British Dietetic Association, and WHO all confirm plant-based diets are nutritionally adequate for all life stages when properly planned.";
+  }
+  
+  // ENVIRONMENT GENERAL
+  if (q.includes('environment') || q.includes('climate') || q.includes('emission') || q.includes('greenhouse')) {
+    return "Animal agriculture produces 14.5-18% of global greenhouse gas emissions - more than all transportation combined. Oxford University found going vegan is the single biggest way to reduce your environmental impact.";
+  }
+  
+  // ETHICS/ANIMALS
+  if (q.includes('ethic') || q.includes('moral') || q.includes('cruel') || q.includes('suffering')) {
+    return "Animals are sentient beings capable of suffering. They have interests in living and not being harmed. We don't need animal products to be healthy, so causing their suffering is unnecessary.";
+  }
+  
+  // Generic fallback
+  return "The peer-reviewed research addresses this question. Check the sources above for detailed scientific evidence.";
+};
   
   // PLANT PAIN RESPONSES - Specific matching
   if (q.includes('feel pain') || q.includes('really feel') || q.includes('like animals')) {
