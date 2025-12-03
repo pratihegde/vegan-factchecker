@@ -12,10 +12,13 @@ const NutritionCalculator = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [copiedResponse, setCopiedResponse] = useState(false);
 
+  // API Configuration - FIX: Use environment variable instead of hardcoded localhost
+  const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+
   // Organized nutrient categories
   const nutrientCategories = {
     "Popular": [
-      { id: 'omega-3', label: 'Omega-3', icon: '🐟' },
+      { id: 'omega-3', label: 'Omega-3', icon: '🟦' },
       { id: 'iron', label: 'Iron', icon: '🔴' },
       { id: 'protein', label: 'Protein', icon: '💪' },
       { id: 'vitamin-b12', label: 'B12', icon: '💊' },
@@ -53,7 +56,8 @@ const NutritionCalculator = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:8000/nutrition-calculate', {
+      // FIX: Use API_BASE_URL instead of hardcoded localhost
+      const response = await fetch(`${API_BASE_URL}/nutrition-calculate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
