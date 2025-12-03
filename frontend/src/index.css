@@ -5,6 +5,7 @@
 @layer base {
   body {
     @apply bg-navy-900 text-gray-100 font-sans antialiased;
+    font-size: 16px; /* Prevents iOS zoom on input focus */
   }
   
   * {
@@ -43,11 +44,11 @@
 
   /* Button styles */
   .btn-primary {
-    @apply bg-magenta-500 hover:bg-magenta-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-magenta-500/50;
+    @apply bg-magenta-500 hover:bg-magenta-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 hover:scale-105 active:scale-95 shadow-lg hover:shadow-magenta-500/50 touch-manipulation min-h-[44px];
   }
 
   .btn-secondary {
-    @apply bg-navy-700 hover:bg-navy-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 border border-navy-600 hover:border-magenta-500/50;
+    @apply bg-navy-700 hover:bg-navy-600 text-white font-semibold py-2 px-4 rounded-lg transition-all duration-200 border border-navy-600 hover:border-magenta-500/50 touch-manipulation min-h-[44px];
   }
 
   /* Copy button animation */
@@ -58,6 +59,27 @@
 
   .copied {
     animation: copied 0.3s ease-in-out;
+  }
+}
+
+@layer utilities {
+  /* Touch-friendly tap targets */
+  .touch-manipulation {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent text selection on buttons */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  /* Mobile-optimized scrolling */
+  .smooth-scroll {
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -89,4 +111,49 @@
 
 .searching {
   animation: pulse-border 2s ease-in-out infinite;
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  /* Reduce animation intensity on mobile for performance */
+  * {
+    animation-duration: 0.2s !important;
+  }
+  
+  /* Ensure minimum touch target sizes (Apple/Android guidelines) */
+  button, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+  }
+  
+  /* Prevent horizontal scroll */
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  /* Optimize font rendering on mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Better readability for small text */
+  small, .text-xs {
+    font-size: 0.8125rem !important; /* 13px minimum for readability */
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Slightly larger touch targets for tablets */
+  button, a {
+    min-height: 48px;
+  }
+}
+
+/* Prevent iOS zoom on input focus */
+@supports (-webkit-touch-callout: none) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
 }

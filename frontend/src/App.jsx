@@ -64,62 +64,71 @@ function App() {
 
       {/* Main Content */}
       <div className="relative z-10">
-        {/* Header */}
-        <header className="py-8 px-6">
+        {/* Header - MOBILE OPTIMIZED */}
+        <header className="py-6 sm:py-8 px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-6xl mx-auto"
           >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
-                <span className="text-5xl">🌱</span>
+            <div className="flex items-center justify-between flex-wrap gap-4">
+              <div className="flex items-center gap-3 sm:gap-4">
+                <span className="text-4xl sm:text-5xl">🌱</span>
                 <div>
-                  <h1 className="text-4xl font-display font-bold gradient-text">
+                  <h1 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold gradient-text">
                     VEGAN FACT CHECKER
                   </h1>
-                  <p className="text-gray-400 mt-1">
+                  <p className="text-gray-400 text-xs sm:text-sm mt-1">
                     Evidence-based activism with peer-reviewed sources
                   </p>
                 </div>
               </div>
 
-              {/* API Status Badge */}
-              <div className="flex items-center gap-3">
+              {/* API Status Badge - MOBILE OPTIMIZED */}
+              <div className="flex items-center gap-2 sm:gap-3">
                 {apiStatus === 'demo' && (
-                  <div className="flex items-center gap-2 px-3 py-2 bg-accent-yellow/20 text-accent-yellow rounded-lg text-sm border border-accent-yellow/30">
-                    <FiAlertCircle />
-                    Demo Mode
+                  <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-2 bg-accent-yellow/20 text-accent-yellow rounded-lg text-xs sm:text-sm border border-accent-yellow/30">
+                    <FiAlertCircle className="text-sm sm:text-base" />
+                    <span className="hidden sm:inline">Demo Mode</span>
+                    <span className="sm:hidden">Demo</span>
                   </div>
                 )}
                 {apiStatus === 'online' && (
-                  <div className="flex items-center gap-2 px-3 py-2 bg-accent-green/20 text-accent-green rounded-lg text-sm border border-accent-green/30">
+                  <div className="flex items-center gap-1 sm:gap-2 px-2 py-1 sm:px-3 sm:py-2 bg-accent-green/20 text-accent-green rounded-lg text-xs sm:text-sm border border-accent-green/30">
                     <span className="w-2 h-2 bg-accent-green rounded-full animate-pulse" />
-                    API Online
+                    <span className="hidden sm:inline">API Online</span>
+                    <span className="sm:hidden">Online</span>
                   </div>
                 )}
               </div>
             </div>
 
-            {/* Example claims */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              <span className="text-gray-400 text-sm">Try:</span>
-              {['Plants have feelings', 'Do vegans get enough protein?', 'How do vegans get omega-3?'].map((example) => (
-                <button
-                  key={example}
-                  onClick={() => !isLoading && handleSearch(example)}
-                  className="px-3 py-1 bg-navy-800 hover:bg-navy-700 text-magenta-400 text-sm rounded-full transition-colors border border-navy-700 hover:border-magenta-500/50"
-                  disabled={isLoading}
-                >
-                  {example}
-                </button>
-              ))}
+            {/* Example claims - MOBILE OPTIMIZED */}
+            <div className="mt-4 sm:mt-6">
+              <span className="text-gray-400 text-xs sm:text-sm mb-2 block">Try these:</span>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { short: 'Plants pain', full: 'Plants have feelings' },
+                  { short: 'Vegan protein', full: 'Do vegans get enough protein?' },
+                  { short: 'Omega-3', full: 'How do vegans get omega-3?' }
+                ].map((example) => (
+                  <button
+                    key={example.full}
+                    onClick={() => !isLoading && handleSearch(example.full)}
+                    className="px-3 py-2 bg-navy-800 hover:bg-navy-700 text-magenta-400 text-xs sm:text-sm rounded-full transition-colors border border-navy-700 hover:border-magenta-500/50 touch-manipulation min-h-[44px]"
+                    disabled={isLoading}
+                  >
+                    <span className="hidden sm:inline">{example.full}</span>
+                    <span className="sm:hidden">{example.short}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </motion.div>
         </header>
 
         {/* Fact Checker Section */}
-        <main className="px-6 pb-12">
+        <main className="px-4 sm:px-6 pb-12">
           <SearchBar onSearch={handleSearch} isLoading={isLoading} />
 
           {/* Error Display */}
@@ -155,38 +164,38 @@ function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="max-w-4xl mx-auto mt-16 text-center"
+              className="max-w-4xl mx-auto mt-12 sm:mt-16 text-center"
             >
-              <div className="glass-card p-12">
-                <span className="text-7xl mb-6 block">🔍</span>
-                <h2 className="text-3xl font-display font-bold text-white mb-4">
+              <div className="glass-card p-8 sm:p-12">
+                <span className="text-6xl sm:text-7xl mb-6 block">🔍</span>
+                <h2 className="text-2xl sm:text-3xl font-display font-bold text-white mb-4">
                   Enter a claim to verify
                 </h2>
-                <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-gray-400 max-w-2xl mx-auto leading-relaxed text-sm sm:text-base">
                   Search peer-reviewed journals and credible sources to find evidence-based
                   responses for your activism. Get direct quotes, citations, and confidence
                   scores.
                 </p>
 
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="p-6 bg-navy-900/50 rounded-lg border border-navy-700">
+                <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div className="p-4 sm:p-6 bg-navy-900/50 rounded-lg border border-navy-700">
                     <span className="text-3xl mb-3 block">🏆</span>
-                    <h3 className="text-white font-semibold mb-2">Peer-Reviewed</h3>
-                    <p className="text-gray-400 text-sm">
+                    <h3 className="text-white font-semibold mb-2 text-sm sm:text-base">Peer-Reviewed</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">
                       Sources from Nature, Harvard, and top journals
                     </p>
                   </div>
-                  <div className="p-6 bg-navy-900/50 rounded-lg border border-navy-700">
+                  <div className="p-4 sm:p-6 bg-navy-900/50 rounded-lg border border-navy-700">
                     <span className="text-3xl mb-3 block">📋</span>
-                    <h3 className="text-white font-semibold mb-2">Quick Responses</h3>
-                    <p className="text-gray-400 text-sm">
+                    <h3 className="text-white font-semibold mb-2 text-sm sm:text-base">Quick Responses</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">
                       Copy-paste talking points for debates
                     </p>
                   </div>
-                  <div className="p-6 bg-navy-900/50 rounded-lg border border-navy-700">
+                  <div className="p-4 sm:p-6 bg-navy-900/50 rounded-lg border border-navy-700 sm:col-span-2 lg:col-span-1">
                     <span className="text-3xl mb-3 block">📖</span>
-                    <h3 className="text-white font-semibold mb-2">Full Citations</h3>
-                    <p className="text-gray-400 text-sm">
+                    <h3 className="text-white font-semibold mb-2 text-sm sm:text-base">Full Citations</h3>
+                    <p className="text-gray-400 text-xs sm:text-sm">
                       APA and MLA format citations ready to use
                     </p>
                   </div>
@@ -197,12 +206,12 @@ function App() {
         </main>
 
         {/* Divider */}
-        <div className="max-w-6xl mx-auto px-6 py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
           <div className="border-t border-navy-700"></div>
         </div>
 
         {/* Nutrition Calculator Section */}
-        <section className="px-6 pb-12">
+        <section className="px-4 sm:px-6 pb-12">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -210,11 +219,11 @@ function App() {
             className="max-w-6xl mx-auto"
           >
             {/* Section Header */}
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-display font-bold gradient-text mb-2">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl font-display font-bold gradient-text mb-2">
                 NUTRITION CALCULATOR
               </h2>
-              <p className="text-gray-400">
+              <p className="text-gray-400 text-sm sm:text-base">
                 Calculate your personalized daily nutrient needs
               </p>
             </div>
@@ -225,9 +234,9 @@ function App() {
         </section>
 
         {/* Footer */}
-        <footer className="py-8 px-6 border-t border-navy-800 mt-12">
+        <footer className="py-6 sm:py-8 px-4 sm:px-6 border-t border-navy-800 mt-12">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-gray-400 text-sm">
+            <div className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
               <p>Built for vegan activists • Powered by peer-reviewed research</p>
               <p className="text-xs mt-1">
                 Sources: Semantic Scholar, PubMed, Tavily Search • RDA: NIH, USDA, WHO
@@ -239,7 +248,8 @@ function App() {
                 href="https://github.com/yourusername"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-magenta-500 transition-colors"
+                className="text-gray-400 hover:text-magenta-500 transition-colors p-2 touch-manipulation"
+                aria-label="GitHub"
               >
                 <FiGithub className="text-xl" />
               </a>
@@ -247,13 +257,15 @@ function App() {
                 href="https://linkedin.com/in/yourprofile"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-magenta-500 transition-colors"
+                className="text-gray-400 hover:text-magenta-500 transition-colors p-2 touch-manipulation"
+                aria-label="LinkedIn"
               >
                 <FiLinkedin className="text-xl" />
               </a>
               <a
                 href="mailto:your.email@example.com"
-                className="text-gray-400 hover:text-magenta-500 transition-colors"
+                className="text-gray-400 hover:text-magenta-500 transition-colors p-2 touch-manipulation"
+                aria-label="Email"
               >
                 <FiMail className="text-xl" />
               </a>
